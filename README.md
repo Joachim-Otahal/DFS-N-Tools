@@ -20,7 +20,7 @@ Options:
 
   -Domaincontroller "FQDN of your domaincontroller"
 
-  -AlwaysUpdateDFSACL:$True or $False. Default is $true, adding and replacing permissing, but not removing any DFS permission.
+  -AlwaysUpdateDFSACL:$True or $False. Default is $true, adding and replacing permissins, but not removing any DFS permission.
 
   -ExcludeSpecialAccounts:$True or $false. Default is $true.
 
