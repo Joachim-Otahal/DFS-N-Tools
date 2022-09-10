@@ -7,9 +7,9 @@ This will enable Access Based Enumeration (ABE) on a DFS root, scan alle DFS-lin
 
 ### More detailed:
 
-According to the microsoft article at https://docs.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/grant-dfsnaccess-not-change-inheritance this is not possible.
+According to the Microsoft article at https://docs.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/grant-dfsnaccess-not-change-inheritance this is not possible.
 
-![Enable-DFS-ABE](https://user-images.githubusercontent.com/10100281/189477196-5dc4a586-654c-46ed-b7d3-48b3e6e5d989.png)
+![Enable-DFS-ABE-01](https://user-images.githubusercontent.com/10100281/189478943-9d10f80f-1a19-4990-ba59-cbd897edc688.png)
 
 But I needed it for over 100 DFS-N roots and several thousand DFS-Links in a larger multiforest environment, 'cause there is NO WAY I'd be doing this by hand. And I needed to exclude the above mentioned "Well known SID" accounts since tranfering them does not make sense.
 It requires the ActiveDirectory and DFSN Module. It has only been tested with Powershell 5.1 on Server 2012 R2 / Server 2016 / Server 2019 and Server 2022. It might work with Powershell 5.1 on Server 2008 R2, but it has not been tested.
