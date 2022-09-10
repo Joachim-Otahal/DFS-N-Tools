@@ -32,11 +32,11 @@ Default usage:
 Example:
 ![Enable-DFS-ABE-02](https://user-images.githubusercontent.com/10100281/189477637-3d4394ff-b2df-44e6-a0fc-2098e5dcb6bf.png)
 
-Result: All reasonable NTFS allow/deny users are transferred (you may have to hit F5 for refresh in the UI).
+Result: All reasonable NTFS allow/deny ACL are transferred (you may have to hit F5 for refresh in the UI).
 ![image](https://user-images.githubusercontent.com/10100281/189477379-9a1a41e2-09b3-4ad0-983e-ca2d3956fe37.png)
 
 More complex example which includes the special accounts:
 ![Enable-DFS-ABE-04](https://user-images.githubusercontent.com/10100281/189477792-41de7180-2a17-4282-8a3c-01c76f603afd.png)
 
-Result: All NTFS allow/deny users are transferred, including those which don't make sense (you may have to hit F5 for refresh in the UI).
+Result: All NTFS allow/deny ACL are transferred, including those which don't make sense (you may have to hit F5 for refresh in the UI).
 ![Enable-DFS-ABE-05](https://user-images.githubusercontent.com/10100281/189477868-f129fd0c-e149-471a-9623-3d6298644079.png)
