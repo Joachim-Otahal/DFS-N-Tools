@@ -29,7 +29,7 @@
 
 # 0.0  2022-09-08 First version (proof of concept since it was needed for a customer with ~ 100 DFS-N root and thousands of DFS-N links)
 # 0.1  2022-09-09 Option "always transfer NTFS permission", basic checks whether there are actually usable NTFS ACL.
-# 0.2  2022-09-10 Getting it ready for internaltional and for Github.
+# 0.2  2022-09-10 Getting it ready for international and for Github.
 
 param (
     [Parameter(Mandatory=$true)][string] $DFSNroot,
