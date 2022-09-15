@@ -68,7 +68,7 @@ $TIMESTAMP = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
 
 #################### Konstanten
 
-$logfile = "$env:USERPROFILE\DesktopActivate-DFS-ABE $TIMESTAMP.log"
+$logfile = "$env:USERPROFILE\Desktop\Activate-DFS-ABE $TIMESTAMP.log"
 
 # Defining special accounts via SID to be independent from the local lanugage.
 $objUserLOCALADMINS       = $(New-Object System.Security.Principal.SecurityIdentifier ("S-1-5-32-544")).Translate( [System.Security.Principal.NTAccount])
