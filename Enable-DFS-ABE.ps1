@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Activates AccessBasedEnumeration on a DFS-Namespace, and transfers the esisting NTFS permissions when avail.
+    Activates AccessBasedEnumeration on a DFS-Namespace, and transfers the existing NTFS permissions when avail.
 .DESCRIPTION
     It will activate ABE on the name space and on all DFS links withing the namespace by transfering the NTFS
     permissions to the DFS link permission, including "Set explicit view permissions on the DFS folder".
@@ -68,7 +68,7 @@ $TIMESTAMP = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
 
 #################### Konstanten
 
-$logfile = "$env:USERPROFILE\Desktop\Activate-DFS-ABE $TIMESTAMP.log"
+$logfile = "$env:USERPROFILE\Desktop\Enable-DFS-ABE $TIMESTAMP.log"
 
 # Defining special accounts via SID to be independent from the local lanugage.
 $objUserLOCALADMINS       = $(New-Object System.Security.Principal.SecurityIdentifier ("S-1-5-32-544")).Translate( [System.Security.Principal.NTAccount])
