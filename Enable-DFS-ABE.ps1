@@ -30,10 +30,11 @@
 # 0.0  2022-09-08 First version (proof of concept since it was needed for a customer with ~ 100 DFS-N root and thousands of DFS-N links)
 # 0.1  2022-09-09 Option "always transfer NTFS permission", basic checks whether there are actually usable NTFS ACL.
 # 0.2  2022-09-10 Getting it ready for international and for Github.
+# 0.3  2022-02-22 Adding a delay before adjusting the AD-Objects (AD-Sync wait)
 
 param (
     [Parameter(Mandatory=$true)][string] $DFSNroot,
-    [string] $Domaincontroller,
+    [string] $Domaincontroller = "bk.bwl.net",
     [bool] $AlwaysUpdateDFSACL = $true,
     [bool] $ExcludeSpecialAccounts = $true
 )
@@ -127,6 +128,9 @@ for ($i = 0;$i -lt $DFSNPaths.Count;$i++) {
         }
     }
 }
+
+Write-Verbose "Waiting for 30 Seconds to give AD-Sync a chance. If you see lots of ""SKIPPED. No DFS ACL found."" it was not enough wait time. Simply re-run this script after a few minutes." -Verbose
+Start-Sleep 30
 
 # Supposedly: The Option "Set explicit view permissions on the DFS folder" cannot be set using Powershell or DFSUTIL, only via GUI.
 # Doing exactly that here right now.
