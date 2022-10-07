@@ -34,7 +34,7 @@
 
 param (
     [Parameter(Mandatory=$true)][string] $DFSNroot,
-    [string] $Domaincontroller = "bk.bwl.net",
+    [Parameter(Mandatory=$true)][string] $Domaincontroller,
     [bool] $AlwaysUpdateDFSACL = $true,
     [bool] $ExcludeSpecialAccounts = $true
 )
@@ -129,7 +129,7 @@ for ($i = 0;$i -lt $DFSNPaths.Count;$i++) {
     }
 }
 
-Write-Verbose "Waiting for 30 Seconds to give AD-Sync a chance. If you see lots of ""SKIPPED. No DFS ACL found."" it was not enough wait time. Simply re-run this script after a few minutes." -Verbose
+Write-Verbose "Waiting for 30 Seconds to give AD-Sync a chance. If you see lots of ""SKIPPED. No DFS ACL found."" or simply nothing is shown below this line it was not enough wait time. Simply re-run this script after a few minutes." -Verbose
 Start-Sleep 30
 
 # Supposedly: The Option "Set explicit view permissions on the DFS folder" cannot be set using Powershell or DFSUTIL, only via GUI.
@@ -139,6 +139,9 @@ $ADSIPath="LDAP://CN=$($DFSNrootObject.Path.Split('\')[-1].ToLower()),CN=$($DFSN
 $LinkListBase = [ADSI]$ADSIPath
 # Extract the active links and their DistinguishedName
 $DFSLinkList = ($LinkListBase.psbase.Children.distinguishedName).Where({$_ -like "CN=link-*" })
+if ($DFSLinkList.Count -lt 1) {
+    Write-Verbose "Warning: Could not get ANY DFS-N ABE config-info from the AD. AD-Sync is probably not yet finished. Re-Run this script in a few minutes." -Verbose
+}
 # And now we activate "Set explicit view permissions on the DFS folder", but only when there is a ACL.
 foreach ($DFSLink in $DFSLinkList) {
     $FullObject = Get-ADObject -Server $Domaincontroller -Identity $DFSLink -Properties *
